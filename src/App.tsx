@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: ''
+  });
+  const [submittedData, setSubmittedData] = useState<null | {username: string, password: string}>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmittedData(formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="flex flex-col items-center">
@@ -16,14 +34,20 @@ function App() {
           </div>
           
           {/* Login form */}
-          <form className="flex flex-col">
+          <form className="flex flex-col" onSubmit={handleSubmit}>
             <input
               type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
               placeholder="Phone number, username, or email"
               className="w-full mb-2 px-2 py-3 border border-gray-300 rounded-sm text-xs bg-gray-50 focus:outline-none focus:border-gray-400"
             />
             <input
               type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               placeholder="Password"
               className="w-full mb-4 px-2 py-3 border border-gray-300 rounded-sm text-xs bg-gray-50 focus:outline-none focus:border-gray-400"
             />
@@ -34,6 +58,15 @@ function App() {
               Log In
             </button>
           </form>
+
+          {/* Display submitted data */}
+          {submittedData && (
+            <div className="mt-4 p-4 bg-gray-100 rounded-sm">
+              <h3 className="font-semibold mb-2">Submitted Data:</h3>
+              <p>Username: {submittedData.username}</p>
+              <p>Password: {submittedData.password}</p>
+            </div>
+          )}
 
           {/* Divider */}
           <div className="flex items-center my-4">
