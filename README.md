@@ -1,8 +1,8 @@
 # Instagram Login fackpage
 
-A React TypeScript implementation of Instagram's login page interface using Vite, Tailwind CSS, and modern web technologies. it is made for another project of mine in which i am making a android app which will scan vernlable QR codes so you can check this by scaning teh QR below.
-(fackqr.png)
+A React TypeScript implementation of Instagram's login page interface using Vite, Tailwind CSS, and modern web technologies. it is made for another project of mine in which i am making a android app which will scan vernlable QR codes so you can check this by scaning the QR below.
 
+![Instagram Login QR Code](./fackqr.jpg)
 
 ## Features
 
